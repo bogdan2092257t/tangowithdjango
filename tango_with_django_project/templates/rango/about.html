@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{% load staticfiles %} <!-- New line -->
+
+<html>
+
+    <head>
+        <title>About</title>
+    </head>
+
+    <body bgcolor="blue">
+        <h1><font color="white">About page</font></h1>
+         <strong>{{ boldmessage }}</strong><br />
+        <a href="/rango/">Back</a><br />
+        <img src="{% static "images/Bogdan.jpg" %}" alt="Bogdan Tufescu" /> <!-- New line -->
+    </body>
+
+</html>
