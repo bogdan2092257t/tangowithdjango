@@ -5,7 +5,10 @@
     </head>
 
     <body>
-	<h2><a href="/rango/category/{{category.slug}}/add_page">Add page</a>
+	{% if user.is_authenticated %}
+           <h2><a href="/rango/category/{{category.slug}}/add_page">Add page</a>
+        {% endif %}
+	
         <h1>{{ category_name }}</h1>
         {% if category %}
             {% if pages %}
