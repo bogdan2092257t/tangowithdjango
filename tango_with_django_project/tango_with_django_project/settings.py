@@ -35,6 +35,7 @@ SECRET_KEY = 'bz_d*b!!-uvm%0!0o@+0#&g#6um5u+jaa%!xznsk7%x&l54$x4'
 DEBUG = True
 
 TEMPLATE_DEBUG = True
+SESSION_COOKIE_AGE=1209600
 
 ALLOWED_HOSTS = []
 
