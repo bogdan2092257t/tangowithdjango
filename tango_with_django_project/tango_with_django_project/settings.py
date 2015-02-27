@@ -15,7 +15,7 @@ TEMPLATE_PATH=os.path.join(BASE_DIR,"templates")
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-LOGIN_URL = '/rango/login/'
+LOGIN_URL = '/accounts/login/'
 
 STATIC_PATH=os.path.join(BASE_DIR,"static")
 STATICFILES_DIRS = (
@@ -39,6 +39,15 @@ SESSION_COOKIE_AGE=1209600
 
 ALLOWED_HOSTS = []
 
+#Registration settings
+
+REGISTRATION_OPEN = True                # If True, users can register
+ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
+LOGIN_REDIRECT_URL = '/rango/'  # The page you want users to arrive at after they successful log in
+LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in,
+                                                                # and are trying to access pages requiring authentications
+
 
 # Application definition
 
@@ -50,6 +59,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+	'registration',
 )
 
 MIDDLEWARE_CLASSES = (
