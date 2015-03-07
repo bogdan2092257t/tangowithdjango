@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from rango.models import Category,Page,UserProfile #some adding here
 from rango.forms import CategoryForm
@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User #stuff could be wrong
 from datetime import datetime
-
+from rango.bing_search import run_query
 
 
 
@@ -48,6 +48,7 @@ def index(request):
     response = render(request,'rango/index.html', context_dict)
 
     return response
+
 
 def about(request):
 
@@ -94,6 +95,19 @@ def category(request, category_name_slug):
 
     # Go render the response and return it to the client.
     return render(request, 'rango/category.html', context_dict)
+	
+def search(request):
+
+    result_list = []
+
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+
+        if query:
+            # Run our Bing function to get the results list!
+            result_list = run_query(query)
+
+    return render(request, 'rango/search.html', {'result_list': result_list})
 	
 @login_required
 def add_category(request):
